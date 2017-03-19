@@ -14,13 +14,17 @@ void main(void) {
     P1IES   = BIT1 | BIT2;          // For transitions from HI-->LO
     P1IFG   = 0x00;                 // Ensure no interrupts are pending
     _BIS_SR(GIE);                   // Activate all interrupts
+
+    _BIS_SR(LPM3_bits + GIE); 			// 	  Enter LPM3 w/interrupt
     while(1){						// Infinite loop
     	unsigned long delay;
     	unsigned long ndelay;
+    	P1OUT = P1OUT ^ BIT0;            	//    Toggle P1.0 for P1.1 push
     	for(ndelay = 0; ndelay<10; ndelay=ndelay+1){
     		for(delay=0; delay<12345; delay=delay+1);
     	}
     	P1OUT = P1OUT ^ BIT0;            	//    Toggle P1.0 for P1.1 push
+    	_BIS_SR(LPM3_bits + GIE); 			// 	  Enter LPM3 w/interrupt
     }
 
 }
@@ -38,7 +42,7 @@ __interrupt void Port_1(void)
     	case 4: // Come here if P1.1 interrupt
 		{
 			P9OUT = P9OUT | BIT7;        		//    Toggle P9.7 on
-			_BIS_SR(LPM3_bits + GIE); 			// 	  Enter LPM3 w/interrupt
+			//_BIS_SR(LPM3_bits + GIE); 			// 	  Enter LPM3 w/interrupt
 			break;                				//    Then leave switch
 		}
 
