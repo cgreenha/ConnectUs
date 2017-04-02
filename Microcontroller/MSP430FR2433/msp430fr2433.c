@@ -1,4 +1,4 @@
-//update Code with New RBG LED for MSP430FR2433
+//update Code with New RGB LED for MSP430FR2433
 
 #include <msp430.h>
 
