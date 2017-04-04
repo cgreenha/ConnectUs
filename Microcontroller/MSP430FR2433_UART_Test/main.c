@@ -2,9 +2,9 @@
 
 #define ENABLE_PINS 0xFFFE 	// Required to use inputs and outputs
 #define UART_CLK_SEL 0x0080 // Specifies accurate clock for UART peripheral
-#define BR0_FOR_9600 0x41 	// Value required to use 9600 baud
+#define BR0_FOR_9600 0x68  //0x41 	// Value required to use 9600 baud
 #define BR1_FOR_9600 0x00 	// Value required to use 9600 baud
-#define BR0_FOR_4800 0x83 	// Value required to use 4800 baud
+#define BR0_FOR_4800 0xD0  //0x83 	// Value required to use 4800 baud
 #define BR1_FOR_4800 0x00 	// Value required to use 4800 baud
 #define CLK_MOD 0x4911 		// Microcontroller will "clean-up" clock signal
 #define SMCLK			0x0200  	// Timer SMCLK source
@@ -60,6 +60,9 @@ int main(void)
 	while(1){
 		// Wait for GPS to send data over UART
 		while(!(UCA0IFG & UCRXIFG))
+		{
+			UCA0TXBUF = 0xAA;
+		}
 		UCA0IFG = UCA0IFG & (~UCRXIFG); // Clear RX Interrupt FlaG
 		*pMessage = UCA0RXBUF;
 		pMessage++;
@@ -164,10 +167,10 @@ void initialize_timers( void )	// this function initializes the timers
 
 void select_clock_signals(void)
 {
-	 CSCTL0 = 0xA500; // "Password" to access clock calibration registers
-	 CSCTL1 = 0x0046; // Specifies frequency of main clock
-	 CSCTL2 = 0x0133; // Assigns additional clock signals
-	 CSCTL3 = 0x0000; // Use clocks at intended frequency, do not slow them down
+	 CSCTL0 = 0x0000; // 0xA500; // "Password" to access clock calibration registers
+	 CSCTL1 = 0x0001; // run frequency at 1 MHz// 0x0046; // Specifies frequency of main clock
+	 CSCTL2 = 0x0001; // do not use multipliers or dividers // 0x0133; // Assigns additional clock signals
+	 CSCTL3 = 0x0000;// 0x0000; // Use clocks at intended frequency, do not slow them down
 }
 
 //*********************************************************************************

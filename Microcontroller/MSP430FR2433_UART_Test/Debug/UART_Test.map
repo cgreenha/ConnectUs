@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v4.4.5                      
 ******************************************************************************
->> Linked Thu Mar 23 11:13:42 2017
+>> Linked Sun Apr 02 12:20:19 2017
 
 OUTPUT FILE NAME:   <UART_Test.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_noexit"  address: 0000c742
+ENTRY POINT SYMBOL: "_c_int00_noargs_noexit"  address: 0000c748
 
 
 MEMORY CONFIGURATION
@@ -118,15 +118,15 @@ section   page    origin      length       input sections
 .text      0    0000c41a    000003ae     
                   0000c41a    000000d6     rts430x_lc_sd_eabi.lib : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
                   0000c4f0    00000080                            : autoinit_wdt.obj (.text:_auto_init_hold_wdt)
-                  0000c570    0000006e     main.obj (.text:main)
-                  0000c5de    00000058     main.obj (.text:_isr:UART_ISR)
-                  0000c636    00000052     main.obj (.text:_isr:Timer0_ISR)
-                  0000c688    00000040     rts430x_lc_sd_eabi.lib : cpy_util.obj (.text:__memcpy_far)
-                  0000c6c8    0000003e     main.obj (.text:assign_baud_rate)
-                  0000c706    0000003c     rts430x_lc_sd_eabi.lib : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
-                  0000c742    0000001a                            : boot_special.obj (.text:_isr:_c_int00_noargs_noexit)
-                  0000c75c    00000018     main.obj (.text:select_clock_signals)
-                  0000c774    00000016     main.obj (.text:assign_pins_to_uart)
+                  0000c570    00000074     main.obj (.text:main)
+                  0000c5e4    00000058     main.obj (.text:_isr:UART_ISR)
+                  0000c63c    00000052     main.obj (.text:_isr:Timer0_ISR)
+                  0000c68e    00000040     rts430x_lc_sd_eabi.lib : cpy_util.obj (.text:__memcpy_far)
+                  0000c6ce    0000003e     main.obj (.text:assign_baud_rate)
+                  0000c70c    0000003c     rts430x_lc_sd_eabi.lib : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
+                  0000c748    0000001a                            : boot_special.obj (.text:_isr:_c_int00_noargs_noexit)
+                  0000c762    00000016     main.obj (.text:assign_pins_to_uart)
+                  0000c778    00000012     main.obj (.text:select_clock_signals)
                   0000c78a    0000000e     rts430x_lc_sd_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
                   0000c798    0000000a     main.obj (.text:timer0_will_count_up_for_300ns)
                   0000c7a2    00000008     main.obj (.text:enable_inputs_and_outputs)
@@ -589,8 +589,8 @@ address   name
 00000460  TA3EX0                        
 0000046e  TA3IV                         
 00000450  TA3R                          
-0000c636  Timer0_ISR                    
-0000c5de  UART_ISR                      
+0000c63c  Timer0_ISR                    
+0000c5e4  UART_ISR                      
 00000510  UCA0ABCTL                     
 00000506  UCA0BRW                       
 00000507  UCA0BRW_H                     
@@ -712,7 +712,7 @@ address   name
 UNDEFED   __TI_INITARRAY_Base           
 UNDEFED   __TI_INITARRAY_Limit          
 0000c7ba  __TI_ISR_TRAP                 
-0000c706  __TI_decompress_none          
+0000c70c  __TI_decompress_none          
 0000c78a  __TI_decompress_rle24         
 0000ffd8  __TI_int40                    
 0000ffda  __TI_int41                    
@@ -735,22 +735,22 @@ UNDEFED   __TI_INITARRAY_Limit
 0000fffc  __TI_int58                    
 ffffffff  __binit__                     
 ffffffff  __c_args__                    
-0000c688  __memcpy_far                  
+0000c68e  __memcpy_far                  
 0000c4f0  _auto_init_hold_wdt           
-0000c742  _c_int00_noargs_noexit        
+0000c748  _c_int00_noargs_noexit        
 0000fffe  _reset_vector                 
 00002f60  _stack                        
 0000c7c0  _system_pre_init              
 0000c7c4  abort                         
-0000c6c8  assign_baud_rate              
-0000c774  assign_pins_to_uart           
+0000c6ce  assign_baud_rate              
+0000c762  assign_pins_to_uart           
 ffffffff  binit                         
 0000c7a2  enable_inputs_and_outputs     
 0000c798  initialize_timers             
 0000c570  main                          
 00002002  nAlertState                   
 00002000  nColor                        
-0000c75c  select_clock_signals          
+0000c778  select_clock_signals          
 0000c798  timer0_will_count_up_for_300ns
 0000c7aa  timerA0_count_for_300n        
 0000c7b2  timerA0_in_up_mode            
@@ -1242,14 +1242,14 @@ address   name
 0000c41a  __TI_CINIT_Limit              
 0000c4f0  _auto_init_hold_wdt           
 0000c570  main                          
-0000c5de  UART_ISR                      
-0000c636  Timer0_ISR                    
-0000c688  __memcpy_far                  
-0000c6c8  assign_baud_rate              
-0000c706  __TI_decompress_none          
-0000c742  _c_int00_noargs_noexit        
-0000c75c  select_clock_signals          
-0000c774  assign_pins_to_uart           
+0000c5e4  UART_ISR                      
+0000c63c  Timer0_ISR                    
+0000c68e  __memcpy_far                  
+0000c6ce  assign_baud_rate              
+0000c70c  __TI_decompress_none          
+0000c748  _c_int00_noargs_noexit        
+0000c762  assign_pins_to_uart           
+0000c778  select_clock_signals          
 0000c78a  __TI_decompress_rle24         
 0000c798  initialize_timers             
 0000c798  timer0_will_count_up_for_300ns

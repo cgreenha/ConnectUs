@@ -25,7 +25,7 @@ void timerA0_count_for_300n(void);
 void timerA0_in_up_mode(void);
 void rgb(char RED, char GREEN, char BLUE)  // use to set up RGB function
 {
-	P4OUT = RED << 1 | GREEN << 2 | BLUE << 3;  // shifted to the correct position and the register
+	P1OUT = RED << 1 | GREEN << 2 | BLUE << 3;  // shifted to the correct position and the register
 	                                            //P4OUT = 0b00001110; // turn them	                                            // and OR them altogether
 }
 
@@ -42,7 +42,7 @@ int main(void)
 
 
 	// Declare pins
-	P4DIR = 0b00001110;     // P4.1, P4.2, P4.3 as output
+	P1DIR = 0b00000111;     // P4.1, P4.2, P4.3 as output
 	                        // P4OUT = 0b00001110     turn them on
 	
 	select_clock_signals(); // Assigns microcontroller clock signals
@@ -86,17 +86,17 @@ __interrupt void UART_ISR(void)
 	if(UCA1RXBUF == 0x47) // if message is "G" for green
 	{
 		nColor = 1;
-		P4DIR = 0b00001110;
+		P1DIR = 0b0000111;
 	}
 	else if(UCA1RXBUF == 0x4F) // if message is "O" for orange
 	{
 		nColor = 2;
-		P4DIR = 0b00001110;
+		P1DIR = 0b00000111;
 	}
 	else if(UCA1RXBUF == 0x52) // if message is "R" for red
 	{
 		nColor = 3;
-		P4DIR = 0b00001110;
+		P1DIR = 0b00000111;
 	}
 	else if(UCA1RXBUF == 0x41) // if message is "A" for alert
 	{
