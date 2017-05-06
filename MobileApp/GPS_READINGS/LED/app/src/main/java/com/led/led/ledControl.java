@@ -76,7 +76,7 @@ public class ledControl extends ActionBarActivity{
         super.onCreate(savedInstanceState);
 new CountDownTimer(10800000, 1800000){
     public void onTick(long millisUntilFinished){
-        double percent = millisUntilFinished/300;
+        double percent = millisUntilFinished/108000;
         notifyc(percent);
     }
     public void onFinish(){
